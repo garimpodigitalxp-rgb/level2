@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso Zona de Impacto - Conteúdo Online</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Estilos do sistema de login */
+        #login-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+        .login-container {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+        }
+        
+        .login-header {
+            margin-bottom: 25px;
+        }
+        
+        .login-header h1 {
+            color: #6a11cb;
+            margin-bottom: 10px;
+        }
+        
+        .login-form {
+            margin-bottom: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #444;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus {
+            border-color: #6a11cb;
+            outline: none;
+        }
+        
+        .login-btn {
+            display: block;
+            width: 100%;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .login-message {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            display: none;
+        }
+        
+        .login-error {
+            background-color: #ffebee;
+            color: #d32f2f;
+            border: 1px solid #ffcdd2;
+        }
+        
+        .logout-container {
+            text-align: right;
+            margin-bottom: 15px;
+        }
+        
+        .logout-btn {
+            display: inline-block;
+            background: #6a11cb;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .logout-btn:hover {
+            background: #2575fc;
+            transform: translateY(-2px);
+        }
+        
+        /* Estilos originais do curso */
+        .header {
+            text-align: center;
+            padding: 30px 20px;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .header h2 {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 20px;
+        }
+        
+        .logo {
+            font-size: 3.5rem;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+        
+        .intro {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .intro p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .tab-container {
+            margin-bottom: 20px;
+        }
+        
+        .tabs {
+            display: flex;
+            list-style-type: none;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            flex-wrap: wrap;
+        }
+        
+        .tabs li {
+            flex: 1;
+            text-align: center;
+            min-width: 120px;
+        }
+        
+        .tabs li a {
+            display: block;
+            padding: 15px;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .tabs li a.active {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+        }
+        
+        .tabs li a:hover:not(.active) {
+            background: #eef4ff;
+        }
+        
+        .module-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .module-title {
+            color: #6a11cb;
+            border-bottom: 2px solid #6a11cb;
+            padding-bottom: 10px;
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .module-title i {
+            margin-right: 10px;
+        }
+        
+        .lesson {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f9f9ff;
+            border-radius: 10px;
+            border-left: 4px solid #6a11cb;
+        }
+        
+        .lesson h3 {
+            color: #2575fc;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .lesson h3 i {
+            margin-right: 10px;
+        }
+        
+        .key-point {
+            background: #eef4ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .key-point h4 {
+            color: #6a11cb;
+            margin-bottom: 10px;
+        }
+        
+        .action-box {
+            background: #6a11cb;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+        }
+        
+        .action-box h4 {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .action-box h4 i {
+            margin-right: 10px;
+        }
+        
+        .progress-container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 30px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .progress-bar {
+            height: 10px;
+            background: #eef4ff;
+            border-radius: 5px;
+            margin: 10px 0;
+            overflow: hidden;
+        }
+        
+        .progress {
+            height: 100%;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            border-radius: 5px;
+            width: 0%;
+            transition: width 1s ease;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #2575fc;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 10px 5px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background: #6a11cb;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            color: #777;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .completed {
+            color: #0ba360;
+            margin-left: 10px;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .header h2 {
+                font-size: 1.2rem;
+            }
+            
+            .tabs {
+                flex-direction: column;
+            }
+            
+            .login-container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Overlay de Login -->
+    <div id="login-overlay">
+        <div class="login-container">
+            <div class="login-header">
+                <h1>Zona de Impacto</h1>
+                <p>Digite a senha para acessar o curso</p>
+            </div>
+            
+            <div class="login-form">
+                <div class="form-group">
+                    <label for="password">Senha de Acesso</label>
+                    <input type="password" id="password" placeholder="Digite a senha fornecida">
+                </div>
+                
+                <button class="login-btn" onclick="checkPassword()">Acessar Curso</button>
+            </div>
+            
+            <div id="login-message" class="login-message login-error">
+                <i class="fas fa-exclamation-circle"></i> Senha incorreta. Tente novamente.
+            </div>
+            
+            <div style="margin-top: 20px; font-size: 14px; color: #777;">
+                <p>Entre em contato conosco se você esqueceu a senha de acesso.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Conteúdo do Curso (inicialmente oculto) -->
+    <div id="course-content" class="hidden">
+        <div class="logout-container">
+            <button class="logout-btn" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Sair</button>
+        </div>
+        
+        <div class="header">
+            <h1>Zona de Impacto</h1>
+            <h2>Da Ação aos Resultados Extraordinários</h2>
+            <div class="logo">ZI</div>
+            <p>Conteúdo Online Completo - Parte 2</p>
+        </div>
+        
+        <div class="intro">
+            <p>Este curso foi desenvolvido para evoluir sua capacidade de transformar ação em resultados mensuráveis e amplificar sua influência.</p>
+            <p>Abaixo você encontrará todos os módulos e aulas do curso. Marque as lições conforme for concluindo para acompanhar seu progresso.</p>
+        </div>
+        
+        <div class="progress-container">
+            <h3>Seu Progresso no Curso: <span id="progress-percentage">0%</span></h3>
+            <div class="progress-bar">
+                <div class="progress" id="progress-bar"></div>
+            </div>
+            <p>Lições concluídas: <span id="completed-lessons">0</span> de <span id="total-lessons">0</span></p>
+        </div>
+
+        <div class="tab-container">
+            <ul class="tabs">
+                <li><a href="#" class="tab-link active" data-tab="mod1"><i class="fas fa-brain"></i> Módulo 1</a></li>
+                <li><a href="#" class="tab-link" data-tab="mod2"><i class="fas fa-arrows-alt-h"></i> Módulo 2</a></li>
+                <li><a href="#" class="tab-link" data-tab="mod3"><i class="fas fa-chart-line"></i> Módulo 3</a></li>
+                <li><a href="#" class="tab-link" data-tab="mod4"><i class="fas fa-users"></i> Módulo 4</a></li>
+                <li><a href="#" class="tab-link" data-tab="mod5"><i class="fas fa-rocket"></i> Módulo 5</a></li>
+            </ul>
+        </div>
+
+        <!-- MÓDULO 1 -->
+        <div id="mod1" class="tab-content active">
+            <div class="module-container">
+                <h2 class="module-title"><i class="fas fa-brain"></i> Módulo 1: A Psicologia do Impacto</h2>
+                <p>Este módulo foi desenvolvido para ajudá-lo a migrar da mentalidade de atividade para a mentalidade de resultado, entendendo os princípios por trás do impacto real.</p>
+                
+                <!-- Aula 1.1 -->
+                <div class="lesson">
+                    <h3><i class="fas fa-sync-alt"></i> Aula 1.1: Mentalidade de Resultado <span class="completed" id="mod1-lesson1"><i class="far fa-check-circle"></i></span></h3>
+                    <p>Saindo do "fazer por fazer" para o "fazer para transformar".</p>
+                    
+                    <div class="key-point">
+                        <h4>Atividade vs. Resultado</h4>
+                        <p>Atividade é o movimento; resultado é a mudança mensurável gerada por esse movimento. Muitos confundem estar ocupado com estar produzindo resultados reais.</p>
+                    </div>
+                    
+                    <div class="key-point">
+                        <h4>Os 3 Pilares da Mentalidade de Impacto</h4>
+                        <p>1. <strong>Intencionalidade:</strong> Cada ação deve servir a um propósito claro<br>
+                        2. <strong>Eficácia sobre eficiência:</strong> Fazer as coisas certas vs. fazer coisas perfeitamente<br>
+                        3. <strong>Responsabilidade por resultados:</strong> Assumir ownership pelos outcomes gerados</p>
+                    </div>
+                    
+                    <div class="action-box">
+                        <h4><i class="fas fa-tasks"></i> Exercício Prático</h4>
+                        <p>Analise seu dia de ontem: liste 5 atividades que realizou e para cada uma, identifique qual resultado tangível produziu. Classifique-as em "apenas atividade" ou "geradora de resultado".</p>
+                        <button class="btn complete-btn" data-module="1" data-lesson="1">Marcar como concluída</button>
+                    </div>
+                </div>
+                
+                <!-- Aula 1.2 -->
+                <div class="lesson">
+                    <h3><i class="fas fa-bolt"></i> Aula 1.2: A Lei do Retorno Amplificado <span class="completed" id="mod1-lesson2"><i class="far fa-check-circle"></i></span></h3>
+                    <p>Entendendo a relação entre intensidade, foco e resultado.</p>
+                    
+                    <div class="key-point">
+                        <h4>O Princípio 80/20 Aplicado à Ação</h4>
+                        <p>Aproximadamente 20% de suas ações geram 80% de seus resultados. Identificar e focar nestas ações de alta alavancagem é o segredo para multiplicar seu impacto.</p>
+                    </div>
+                    
+                    <div class="key-point">
+                        <h4>Fórmula do Impacto</h4>
+                        <p><strong>Impacto = (Ação Correta) × (Intensidade) × (Foco)</strong><br>
+                        Ação errada com muita intensidade e foco ainda gera pouco impacto. Ação certa com baixa intensidade também. O máximo impacto vem da combinação dos três elementos.</p>
+                    </div>
+                    
+                    <div class="action-box">
+                        <h4><i class="fas fa-tasks"></i> Questionário de Autodiagnóstico</h4>
+                        <p>Para seus projetos atuais: <br>
+                        - Quais ações estão gerando 80% dos resultados?<br>
+                        - Você está aplicando intensidade suficiente nas ações certas?<br>
+                        - Quais distrações estão diluindo seu foco?</p>
+                        <button class="btn complete-btn" data-module="1" data-lesson="2">Marcar como concluída</button>
+                    </div>
+                </div>
+                
+                <!-- Aula 1.3 -->
+                <div class="lesson">
+                    <h3><i class="fas fa-tint"></i> Aula 1.3: Identificando Vazamentos de Energia <span class="completed" id="mod1-lesson3"><i class="far fa-check-circle"></i></span></h3>
+                    <p>Como encontrar e eliminar os desperdiçadores silenciosos de seu potencial.</p>
+                    
+                    <div class="key-point">
+                        <h4>Os 5 Maiores Vazadores de Energia</h4>
+                        <p>1. <strong>Multitasking:</strong> Alternância constante entre tarefas<br>
+                        2. <strong>Reuniões desnecessárias:</strong> Tempo coletivo mal investido<br>
+                        3. <strong>Interrupções frequentes:</strong> Fragmentação da atenção<br>
+                        4. <strong>Perfeccionismo em coisas irrelevantes:</strong> Excelência onde basta competência<br>
+                        5. <strong>Déficit de "não":</strong> Incapacidade de recusar demandas alheias</p>
+                    </div>
+                    
+                    <div class="key-point">
+                        <h4>Metodologia de Detecção</h4>
+                        <p>Rastreie sua energia por 3 dias: anote a cada hora seu nível de energia (1-10) e as atividades realizadas. Padrões de queda revelarão seus vazamentos específicos.</p>
+                    </div>
+                    
+                    <div class="action-box">
+                        <h4><i class="fas fa-tasks"></i> Prática Guiada</h4>
+                        <p>Execute o rastreamento de energia por 3 dias. Identifique seus 2 principais vazadores e crie um plano de ação para reduzir cada um em pelo menos 50% na próxima semana.</p>
+                        <button class="btn complete-btn" data-module="1" data-lesson="3">Marcar como concluída</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MÓDULO 2 -->
+        <div id="mod2" class="tab-content">
+            <div class="module-container">
+                <h2 class="module-title"><i class="fas fa-arrows-alt-h"></i> Módulo 2: Estratégias de Ampliação</h2>
+                <p>Este módulo foi desenvolvido para ensinar técnicas avançadas de alavancagem que transformam esforço linear em resultados exponenciais.</p>
+                
+                <!-- Aula 2.1 -->
+                <div class="lesson">
+                    <h3><i class="fas fa-compress-arrows-alt"></i> Aula 2.1: O Princípio da Alavancagem <span class="completed" id="mod2-lesson1"><i class="far fa-check-circle"></i></span></h3>
+                    <p>Como obter resultados exponenciais com esforço linear.</p>
+                    
+                    <div class="key-point">
+                        <h4>Os 4 Tipos de Alavancagem</h4>
+                        <p>1. <strong>Alavancagem de Conhecimento:</strong> Aprender uma vez, aplicar muitas<br>
+                        2. <strong>Alavancagem de Recursos:</strong> Usar melhor o que já está disponível<br>
+                        3. <strong>Alavancagem de Rede:</strong> Conectar pessoas e oportunidades<br>
+                        4. <strong>Alavancagem de Sistemas:</strong> Criar processos replicáveis</p>
+                    </div>
+                    
+                    <div class="key-point">
+                        <h4>Identificando Oportunidades de Alavancagem</h4>
+                        <p>Para cada projeto ou meta, pergunte: <br>
+                        - Isso pode ser ensinado para outros?<br>
+                        - Isso pode ser automatizado ou sistematizado?<br>
+                        - Isso pode ser replicado em escala?<br>
+                        - Quem poderia fazer isso melhor ou mais rápido?</p>
+                    </div>
+                    
+                    <div class="action-box">
+                        <h4><i class="fas fa-tasks"></i> Exercício Prático: Mapa de Alavancagem</h4>
+                        <p>Escolha um projeto atual e identifique oportunidades para cada tipo de alavancagem. Priorize 2-3 que trariam maior impacto com menor esforço adicional.</p>
+                        <button class="btn complete-btn" data-module="2" data-lesson="1">Marcar como concluída</button>
+                    </div>
+                </div>
+                
+                <!-- Aula 2.2 -->
+                <div class="lesson">
+                    <h3><i class="fas fa-project-diagram"></i> Aula 2.2: Sequências Estratégicas <span class="completed" id="mod2-lesson2"><i class="far fa-check-circle"></i></span></h3>
+                    <p>Encadeando ações para criar momentum irreversível.</p>
+                    
+                    <div class="key-point">
+                        <h4>O Poder das Sequências vs. Ações Isoladas</h4>
+                        <p>Ações isoladas geram impactos pontuais. Sequências estratégicas criam efeitos cumulativos e compostos onde cada ação aumenta a eficácia da próxima.</p>
+                    </div>
+                    
+                    <div class="key-point">
+                        <h4>Construindo Sequências Eficazes</h4>
+                        <p>1. <strong>Comece com ganhos rápidos:</strong> Estabeleça confiança e momentum<br>
+                        2. <strong>Use resultados como degraus:</strong> Cada conquista facilita a próxima<br>
+                        3. <strong>Projete pontos de não-retorno:</strong> Crie compromissos que tornam difícil desistir<br>
+                        4. <strong>Antecipe efeitos secundários:</strong> Prepare-se para oportunidades imprevistas</p>
+                    </div>
+                    
+                    <div class="action-box">
+                        <h4><i class="fas fa-tasks"></i> Exercício: Design de Sequência</h4>
+                        <p>Para um objetivo importante, desenhe uma sequência estratégica de 5-7 passos onde cada ação constrói sobre a anterior. Identifique o primeiro passo que pode ser dado dentro de 24 horas.</p>
+                        <button class="btn complete-btn" data-module="2" data-lesson="2">Marcar como concluída</button>
+                    </div>
+                </div>
+                
+                <!-- Aula 2.3 -->
+                <div class="lesson">
+                    <h3><i class="fas fa-bullseye"></i> Aula 2.3: Pontos de Influência <span class="completed" id="mod2-lesson3"><i class="far fa-check-circle"></i></span></h3>
+                    <p>Identificando e agindo nos momentos e lugares que geram o maior impacto.</p>
+                    
+                    <div class="key-point">
+                        <h4>O Conceito de Pontos de Influência</h4>
+                        <p>Em qualquer sistema, existem pontos onde uma pequena intervenção pode produzir grandes mudanças. Identificá-los é mais importante do que trabalhar duro em áreas de baixa alavancagem.</p>
+                    </div>
+                    
+                    <div class="key-point">
+                        <h4>Como Identificar Pontos de Influência</h4>
+                        <p>1. <strong>Análise de gargalos:</strong> Onde estão os principais obstáculos?<br>
+                        2. <strong>Padrões de repetição:</strong> Quais problemas recorrem frequentemente?<br>
+                        3. <strong>Concentração de recursos:</strong> Onde estão as pessoas, atenção ou capital?<br>
+                        4. <strong>Momento decisivo:</strong> Quando pequenas ações têm efeitos desproporcionais?</p>
+                    </div>
+                    
+                    <div class="action-box">
+                        <h4><i class="fas fa-tasks"></i> Exercício: Mapeamento de Pontos de Influência</h4>
+                        <p>Escolha uma área importante da sua vida ou trabalho. Identifique 3-5 pontos de influência onde intervenções focadas poderiam gerar desproporcional impacto. Priorize um para ação imediata.</p>
+                        <button class="btn complete-btn" data-module="2" data-lesson="3">Marcar como concluída</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MÓDULO 3 -->
+        <div id="mod3" class="tab-content">
+            <div class="module-container">
+                <h2 class="module-title"><i class="fas fa-chart-line"></i> Módulo 3: Métricas e Análise</h2>
+                <p>Este módulo foi desenvolvido para ajudá-lo a medir o que realmente importa, criando sistemas de feedback que guiam melhorias contínuas.</p>
+                
+                <!-- Aula 3.1 -->
+                <div class="lesson">
+                    <h3><i class="fas fa-ruler"></i> Aula 3.1: Do Activity para o Outcome <span class="completed" id="mod3-lesson1"><i class="far fa-check-circle"></i></span></h3>
+                    <p>O que realmente medir para avaliar progresso real.</p>
+                    
+                    <div class="key-point">
+                        <h4>Métricas de Vaidade vs. Métricas de Resultado</h4>
+                        <p>Métricas de vaidade (ex: número de horas trabalhadas, tarefas riscadas) fazem você se sentir bem, mas não indicam progresso real. Métricas de resultado (ex: valor entregue, problemas resolvidos) mostram impacto real.</p>
+                    </div>
+                    
+                    <div class="key-point">
+                        <h4>Framework de Métricas Significativas</h4>
+                        <p>Para cada objetivo, defina métricas que sejam: <br>
+                        1. <strong>Relevantes:</strong> Diretamente relacionadas ao resultado desejado<br>
+                        2. <strong>Acionáveis:</strong> Podem ser influenciadas por suas ações<br>
+                        3. <strong>Tempestivas:</strong> Disponíveis com frequência suficiente para guiar decisões<br>
+                        4. <strong>Simples:</strong> Fáceis de coletar e interpretar</p>
+                    </div>
+                    
+                    <div class="action-box">
+                        <h4><i class="fas fa-tasks"></i> Exercício: Reformulação de Métricas</h4>
+                        <p>Para seus 3 projetos principais, identifique as métricas que você está acompanhando atualmente. Classifique-as em "vaidade" ou "resultado". Para cada um, defina 1-2 novas métricas verdadeiramente significativas.</p>
+                        <button class="btn complete-btn" data-module="3" data-lesson="1">Marcar como concluída</button>
+                    </div>
+                </div>
+                
+                <!-- Aula 3.2 -->
+                <div class="lesson">
+                    <h3><i class="fas fa-sync"></i> Aula 3.2: Sistemas de Feedback Rápido <span class="completed" id="mod3-lesson2"><i class="far fa-check-circle"></i></span></h3>
+                    <p>Criando ciclos de aprendizado e ajuste contínuo.</p>
+                    
+                    <div class="key-point">
+                        <h4>O Valor dos Ciclos de Feedback Curtos</h4>
+                        <p>Ciclos longos de feedback (semanas ou meses) retardam o aprendizado e adaptação. Ciclos curtos (horas ou dias) permitem ajustes rápidos e acumulação de pequenas melhorias que levam a grandes avanços.</p>
+                    </div>
+                    
+                    <div class="key-point">
+                        <h4>Implementando Feedback Rápido</h4>
+                        <p>1. <strong>Defina pontos de verificação:</strong> Momentos específicos para avaliação<br>
+                        2. <strong>Estabeleça critérios claros:</strong> O que significa "funcionando" ou "não funcionando"?<br>
+                        3. <strong>Automatize a coleta:</strong> Use ferramentas para reduzir esforço manual<br>
+                        4. <strong>Crie rituais de revisão:</strong> Momentos regulares para analisar os dados</p>
+                    </div>
+                    
+                    <div class="action-box">
+                        <h4><i class="fas fa-tasks"></i> Exercício: Design de Ciclo de Feedback</h4>
+                        <p>Escolha um projeto e desenhe um sistema de feedback com ciclo máximo de 7 dias. Defina: que dados coletar, como coletar, quando revisar e como tomar decisões com base no aprendizado.</p>
+                        <button class="btn complete-btn" data-module="3" data-lesson="2">Marcar como concluída</button>
+                    </div>
+                </div>
+                
+                <!-- Aula 3.3 -->
+                <div class="lesson">
+                    <h3><i class="fas fa-search"></i> Aula 3.3: Análise Pós-Ação <span class="completed" id="mod3-lesson3"><i class="far fa-check-circle"></i></span></h3>
+                    <p>O ritual para converter experiência em expertise.</p>
+                    
+                    <div class="key-point">
+                        <h4>Estrutura da Análise Pós-Ação</h4>
+                        <p>1. <strong>Contexto:</strong> O que pretendíamos alcançar?<br>
+                        2. <strong>Realidade:</strong> O que realmente aconteceu?<br>
+                        3. <strong>Aprendizados:</strong> O que funcionou bem e por quê? O que não funcionou e por quê?<br>
+                        4. <strong>Mudanças:</strong> O que faremos diferente na próxima vez?</p>
+                    </div>
+                    
+                    <div class="key-point">
+                        <h4>Mentalidade para Análise Eficaz</h4>
+                        <p>• Foque no sistema, não nas pessoas<br>
+                        • Assume que todos fizeram o melhor com o que tinham<br>
+                        • Busque entender, não culpar<br>
+                        • Mantenha a melhoria contínua como objetivo</p>
+                    </div>
+                    
+                    <div class="action-box">
+                        <h4><i class="fas fa-tasks"></i> Exercício: Primeira Análise Pós-Ação</h4>
+                        <p>Execute uma análise pós-ação completa para um projeto recente (bem-sucedido ou não). Documente os aprendizados e defina 2-3 mudanças concretas para implementar no próximo projeto similar.</p>
+                        <button class="btn complete-btn" data-module="3" data-lesson="3">Marcar como concluída</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MÓDULO 4 -->
+        <div id="mod4" class="tab-content">
+            <div class="module-container">
+                <h2 class="module-title"><i class="fas fa-users"></i> Módulo 4: Liderança e Influência Prática</h2>
+                <p>Este módulo foi desenvolvido para ampliar seu impacto através de outros, transformando ação individual em resultado coletivo.</p>
+                
+                <!-- Aula 4.1 -->
+                <div class="lesson">
+                    <h3><i class="fas fa-comment-alt"></i> Aula 4.1: Comunicando para Impactar <span class="completed" id="mod4-lesson1"><i class="far fa-check-circle"></i></span></h3>
+                    <p>Como articular ações e resultados para mobilizar pessoas.</p>
+                    
+                    <div class="key-point">
+                        <h4>Os 4 Elementos da Comunicação com Impacto</h4>
+                        <p>1. <strong>Clareza:</strong> Mensagem simples e compreensível<br>
+                        2. <strong>Relevância:</strong> Conexão com interesses e necessidades do ouvinte<br>
+                        3. <strong>Credibilidade:</strong> Dados, exemplos e demonstrações concretas<br>
+                        4. <strong>Emoção:</strong> Apelo a valores e aspirações compartilhadas</p>
+                    </div>
+                    
+                    <div class="key-point">
+                        <h4>Estruturas Narrativas Poderosas</h4>
+                        <p>• <strong>Antes-Depois:</strong> O problema antigo vs. a nova realidade<br>
+                        • <strong>Jornada do Herói:</strong> O desafio superado através de esforço<br>
+                        • <strong>Caso de Uso:</strong> Exemplo específico de sucesso aplicado<br>
+                        • <strong>Dados que Contam História:</strong> Estatísticas transformadas em narrativa</p>
+                    </div>
+                    
+                    <div class="action-box">
+                        <h4><i class="fas fa-tasks"></i> Exercício: Design de Mensagem</h4>
+                        <p>Escolha um resultado importante que você alcançou recentemente. Desenvolva 3 versões da mesma mensagem: uma de 30 segundos, uma de 2 minutos e uma de 5 minutos, cada uma adaptada para um público diferente.</p>
+                        <button class="btn complete-btn" data-module="4" data-lesson="1">Marcar como concluída</button>
+                    </div>
+                </div>
+                
+                <!-- Aula 4.2 -->
+                <div class="lesson">
+                    <h3><i class="fas fa-chess-board"></i> Aula 4.2: Criando uma Cultura de Alto Impacto <span class="completed" id="mod4-lesson2"><i class="far fa-check-circle"></i></span></h3>
+                    <p>Como cultivar um ambiente onde resultados extraordinários se tornam a norma.</p>
+                    
+                    <div class="key-point">
+                        <h4>Elementos de uma Cultura de Alto Impacto</h4>
+                        <p>1. <strong>Clareza de Direção:</strong> Todos entendem para onde vamos e por quê<br>
+                        2. <strong>Responsabilidade Compartilhada:</strong> Cada um assume ownership pelos resultados<br>
+                        3. <strong>Feedback Constante:</strong> Aprendizado e ajuste são incorporados ao dia a dia<br>
+                        4. <strong>Celebração de Progresso:</strong> Reconhecimento de marcos e conquistas</p>
+                    </div>
+                    
+                    <div class="key-point">
+                        <h4>Liderança como Modelo</h4>
+                        <p>A cultura é primeiro modelada, depois cultivada. Líderes devem demonstrar através de ações (não apenas palavras) os comportamentos que esperam ver nos outros: foco em resultados, aprendizado contínuo e responsabilidade.</p>
+                    </div>
+                    
+                    <div class="action-box">
+                        <h4><i class="fas fa-tasks"></i> Exercício: Diagnóstico Cultural</h4>
+                        <p>Avalie seu ambiente atual (equipe, departamento ou organização) em cada um dos 4 elementos de cultura de alto impacto. Identifique o elemento mais fraco e crie 3 ações específicas para fortalecê-lo.</p>
+                        <button class="btn complete-btn" data-module="4" data-lesson="2">Marcar como concluída</button>
+                    </div>
+                </div>
+                
+                <!-- Aula 4.3 -->
+                <div class="lesson">
+                    <h3><i class="fas fa-battery-three-quarters"></i> Aula 4.3: Gestão de Energia Avançada <span class="completed" id="mod4-lesson3"><i class="far fa-check-circle"></i></span></h3>
+                    <p>Protocolos para sustentar alto desempenho sem esgotamento.</p>
+                    
+                    <div class="key-point">
+                        <h4>As 4 Dimensões da Energia</h4>
+                        <p>1. <strong>Energia Física:</strong> Capacidade corporal de realizar trabalho<br>
+                        2. <strong>Energia Mental:</strong> Capacidade de foco e concentração<br>
+                        3. <strong>Energia Emocional:</strong> Capacidade de gerenciar emoções e relacionamentos<br>
+                        4. <strong>Energia Espiritual:</strong> Senso de propósito e conexão com algo maior</p>
+                    </div>
+                    
+                    <div class="key-point">
+                        <h4>Rituais de Recarga em Cada Dimensão</h4>
+                        <p>• <strong>Física:</strong> Sono de qualidade, nutrição, movimento, respiração<br>
+                        • <strong>Mental:</strong> Foco profundo, meditação, pausas conscientes<br>
+                        • <strong>Emocional:</strong> Conexões significativas, gratidão, expressão criativa<br>
+                        • <strong>Espiritual:</strong> Reflexão sobre propósito, serviço aos outros, tempo na natureza</p>
+                    </div>
+                    
+                    <div class="action-box">
+                        <h4><i class="fas fa-tasks"></i> Exercício: Plano de Gestão de Energia</h4>
+                        <p>Avalie seu nível atual de energia em cada dimensão (1-10). Para cada dimensão abaixo de 7, defina 2 rituais específicos de recarga que você implementará diariamente ou semanalmente.</p>
+                        <button class="btn complete-btn" data-module="4" data-lesson="3">Marcar como concluída</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MÓDULO 5 -->
+        <div id="mod5" class="tab-content">
+            <div class="module-container">
+                <h2 class="module-title"><i class="fas fa-rocket"></i> Módulo 5: Projeto de Impacto</h2>
+                <p>Este módulo foi desenvolvido para ajudá-lo a aplicar todo o conhecimento adquirido em um desafio real, com acompanhamento e orientação.</p>
+                
+                <!-- Aula 5.1 -->
+                <div class="lesson">
+                    <h3><i class="fas fa-bullseye"></i> Aula 5.1: Definindo um Desafio de Impacto <span class="completed" id="mod5-lesson1"><i class="far fa-check-circle"></i></span></h3>
+                    <p>Selecionando e estruturando um projeto real para aplicação prática.</p>
+                    
+                    <div class="key-point">
+                        <h4>Critérios para um Bom Desafio de Impacto</h4>
+                        <p>• <strong>Relevante:</strong> Alinhado com seus objetivos importantes<br>
+                        • <strong>Desafiador mas realizável:</strong> Fora da zona de conforto mas dentro da zona possível<br>
+                        • <strong>Mensurável:</strong> Com critérios claros de sucesso<br>
+                        • <strong>Temporal:</strong> Com prazo definido (4-8 semanas ideal)<br>
+                        • <strong>Aprendizado:</strong> Oportunidade de desenvolver novas capacidades</p>
+                    </div>
+                    
+                    <div class="key-point">
+                        <h4>Estruturação do Desafio</h4>
+                        <p>1. <strong>Declaração de Objetivo:</strong> O que exatamente será alcançado?<br>
+                        2. <strong>Métricas de Sucesso:</strong> Como saberemos que foi bem-sucedido?<br>
+                        3. <strong>Principais Marcos:</strong> Pontos de verificação ao longo do caminho<br>
+                        4. <strong>Recursos Necessários:</strong> O que será necessário para ter sucesso?<br>
+                        5. <strong>Riscos e Obstáculos:</strong> O que pode dificultar e como mitigar?</p>
+                    </div>
+                    
+                    <div class="action-box">
+                        <h4><i class="fas fa-tasks"></i> Exercício: Escolha e Estruturação</h4>
+                        <p>Selecione um desafio real que você enfrentará nas próximas 4-8 semanas. Estruture-o usando o framework acima. Documente tudo em uma página para revisão constante.</p>
+                        <button class="btn complete-btn" data-module="5" data-lesson="1">Marcar como concluída</button>
+                    </div>
+                </div>
+                
+                <!-- Aula 5.2 -->
+                <div class="lesson">
+                    <h3><i class="fas fa-tools"></i> Aula 5.2: Elaborando um Plano de Ação com Alavancagem <span class="completed" id="mod5-lesson2"><i class="far fa-check-circle"></i></span></h3>
+                    <p>Desenvolvendo um plano estratégico que maximiza impacto e minimiza esforço disperso.</p>
+                    
+                    <div class="key-point">
+                        <h4>Elementos de um Plano de Ação com Alavancagem</h4>
+                        <p>1. <strong>Pontos de Influência:</strong> Onde focar para máximo impacto<br>
+                        2. <strong>Sequência Estratégica:</strong> Ordem ideal de ações<br>
+                        3. <strong>Alavancagens:</strong> Como multiplicar resultados com mesmo esforço<br>
+                        4. <strong>Sistema de Métricas:</strong> Como medir progresso e resultados<br>
+                        5. <strong>Rituais de Revisão:</strong> Quando e como ajustar o curso</p>
+                    </div>
+                    
+                    <div class="key-point">
+                        <h4>Evitando Armadilhas Comuns</h4>
+                        <p>• Superestimar o que pode fazer em curto prazo<br>
+                        • Subestimar o que pode fazer em longo prazo<br>
+                        • Confundir atividade com progresso<br>
+                        • Negligenciar pontos de alavancagem por parecerem complexos inicialmente</p>
+                    </div>
+                    
+                    <div class="action-box">
+                        <h4><i class="fas fa-tasks"></i> Exercício: Desenvolvimento do Plano</h4>
+                        <p>Para o desafio selecionado, desenvolva um plano de ação detalhado incorporando os elementos de alavancagem aprendidos. Identifique especificamente onde cada tipo de alavancagem (conhecimento, recursos, rede, sistemas) será aplicado.</p>
+                        <button class="btn complete-btn" data-module="5" data-lesson="2">Marcar como concluída</button>
+                    </div>
+                </div>
+                
+                <!-- Aula 5.3 -->
+                <div class="lesson">
+                    <h3><i class="fas fa-chalkboard-teacher"></i> Aula 5.3: Apresentação de Resultados <span class="completed" id="mod5-lesson3"><i class="far fa-check-circle"></i></span></h3>
+                    <p>Estruturando e comunicando os resultados alcançados para maximizar aprendizado e reconhecimento.</p>
+                    
+                    <div class="key-point">
+                        <h4>Estrutura de Apresentação de Resultados</h4>
+                        <p>1. <strong>Contexto e Objetivo:</strong> O que se pretendia alcançar e por que era importante<br>
+                        2. <strong>Abordagem Estratégica:</strong> Como o desafio foi abordado (métodos, alavancagens)<br>
+                        3. <strong>Resultados Alcançados:</strong> O que foi concretamente realizado (com dados)<br>
+                        4. <strong>Aprendizados Principais:</strong> O que funcionou, o que não funcionou e por quê<br>
+                        5. <strong>Próximos Passos e Aplicações:</strong> Como os aprendizados serão aplicados no futuro</p>
+                    </div>
+                    
+                    <div class="key-point">
+                        <h4>Maximizando o Valor da Jornada</h4>
+                        <p>Independente dos resultados específicos, todo projeto completo oferece aprendizado valioso. A chave é extrair esses aprendizados explicitamente e aplicá-los em iniciativas futuras, criando um ciclo virtuoso de melhoria contínua.</p>
+                    </div>
+                    
+                    <div class="action-box">
+                        <h4><i class="fas fa-tasks"></i> Exercício: Preparação de Apresentação</h4>
+                        <p>Prepare uma apresentação de 5-10 minutos sobre seu projeto de impacto, cobrindo todos os elementos da estrutura acima. Pratique apresentando para um colega ou grave em vídeo para autoavaliação.</p>
+                        <button class="btn complete-btn" data-module="5" data-lesson="3">Marcar como concluída</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Zona de Impacto - Todos os direitos reservados © 2025</p>
+            <p>Este material é de uso exclusivo do aluno.</p>
+        </div>
+    </div>
+
+    <script>
+        // =============================================
+        // SISTEMA DE LOGIN
+        // =============================================
+        
+        // Senha de acesso (altere para a senha desejada)
+        const CORRECT_PASSWORD = "ZonaImpacto2025";
+        
+        // Verificar se o usuário já está logado
+        function checkLogin() {
+            if (localStorage.getItem('courseAuthenticated') === 'true') {
+                document.getElementById('login-overlay').style.display = 'none';
+                document.getElementById('course-content').classList.remove('hidden');
+            }
+        }
+        
+        // Verificar a senha fornecida
+        function checkPassword() {
+            const passwordInput = document.getElementById('password').value;
+            const messageDiv = document.getElementById('login-message');
+            
+            if (passwordInput === CORRECT_PASSWORD) {
+                // Senha correta - dar acesso ao curso
+                localStorage.setItem('courseAuthenticated', 'true');
+                document.getElementById('login-overlay').style.display = 'none';
+                document.getElementById('course-content').classList.remove('hidden');
+            } else {
+                // Senha incorreta - mostrar mensagem de erro
+                messageDiv.style.display = 'block';
+                setTimeout(() => {
+                    messageDiv.style.display = 'none';
+                }, 3000);
+            }
+        }
+        
+        // Logout do curso
+        function logout() {
+            localStorage.removeItem('courseAuthenticated');
+            document.getElementById('login-overlay').style.display = 'flex';
+            document.getElementById('course-content').classList.add('hidden');
+            document.getElementById('password').value = '';
+        }
+        
+        // Permitir pressionar Enter para enviar o formulário
+        document.getElementById('password').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkPassword();
+            }
+        });
+        
+        // =============================================
+        // SISTEMA ORIGINAL DO CURSO
+        // =============================================
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            // Verificar login primeiro
+            checkLogin();
+            
+            const tabLinks = document.querySelectorAll('.tab-link');
+            const tabContents = document.querySelectorAll('.tab-content');
+            const completeButtons = document.querySelectorAll('.complete-btn');
+            const progressBar = document.getElementById('progress-bar');
+            const progressPercentage = document.getElementById('progress-percentage');
+            const completedLessons = document.getElementById('completed-lessons');
+            const totalLessons = document.getElementById('total-lessons');
+            
+            // Configurar o total de lições
+            totalLessons.textContent = document.querySelectorAll('.lesson').length;
+            
+            // Inicializar o progresso salvo
+            let progress = JSON.parse(localStorage.getItem('courseProgress')) || {};
+            updateProgress();
+            
+            // Configurar navegação por abas
+            tabLinks.forEach(function(link) {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Remove active class from all tabs
+                    tabLinks.forEach(function(tab) {
+                        tab.classList.remove('active');
+                    });
+                    
+                    // Add active class to clicked tab
+                    this.classList.add('active');
+                    
+                    // Hide all tab contents
+                    tabContents.forEach(function(content) {
+                        content.classList.remove('active');
+                    });
+                    
+                    // Show the corresponding tab content
+                    const tabId = this.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+            
+            // Configurar botões de conclusão
+            completeButtons.forEach(function(button) {
+                const module = button.getAttribute('data-module');
+                const lesson = button.getAttribute('data-lesson');
+                const key = `mod${module}-lesson${lesson}`;
+                
+                // Verificar se já está concluído
+                if (progress[key]) {
+                    document.getElementById(key).innerHTML = '<i class="fas fa-check-circle"></i>';
+                }
+                
+                button.addEventListener('click', function() {
+                    progress[key] = true;
+                    localStorage.setItem('courseProgress', JSON.stringify(progress));
+                    document.getElementById(key).innerHTML = '<i class="fas fa-check-circle"></i>';
+                    updateProgress();
+                    
+                    // Feedback visual
+                    button.textContent = 'Concluído!';
+                    button.style.background = '#0ba360';
+                    setTimeout(() => {
+                        button.textContent = 'Marcar como concluída';
+                        button.style.background = '';
+                    }, 1500);
+                });
+            });
+            
+            // Atualizar barra de progresso
+            function updateProgress() {
+                const total = document.querySelectorAll('.lesson').length;
+                let completed = 0;
+                
+                for (const key in progress) {
+                    if (progress[key]) completed++;
+                }
+                
+                const percentage = Math.round((completed / total) * 100);
+                progressBar.style.width = `${percentage}%`;
+                progressPercentage.textContent = `${percentage}%`;
+                completedLessons.textContent = completed;
+                
+                // Atualizar contagem de lições concluídas
+                document.querySelectorAll('.completed i').forEach(icon => {
+                    icon.className = 'far fa-check-circle';
+                });
+                
+                for (const key in progress) {
+                    if (progress[key] && document.getElementById(key)) {
+                        document.getElementById(key).innerHTML = '<i class="fas fa-check-circle"></i>';
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
