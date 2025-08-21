@@ -967,7 +967,7 @@
             totalLessons.textContent = document.querySelectorAll('.lesson').length;
             
             // Inicializar o progresso salvo
-            let progress = JSON.parse(localStorage.getItem('courseProgress')) || {};
+            let progress = JSON.parse(localStorage.getItem('courseProgressZI')) || {};
             updateProgress();
             
             // Configurar navegação por abas
@@ -1007,7 +1007,7 @@
                 
                 button.addEventListener('click', function() {
                     progress[key] = true;
-                    localStorage.setItem('courseProgress', JSON.stringify(progress));
+                    localStorage.setItem('courseProgressZI', JSON.stringify(progress));
                     document.getElementById(key).innerHTML = '<i class="fas fa-check-circle"></i>';
                     updateProgress();
                     
