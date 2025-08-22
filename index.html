@@ -995,31 +995,31 @@
             });
             
             // Configurar botões de conclusão
-            completeButtons.forEach(function(button) {
-                const module = button.getAttribute('data-module');
-                const lesson = button.getAttribute('data-lesson');
-                const key = `mod${module}-lesson${lesson}`;
-                
-                // Verificar se já está concluído
-                if (progress[key]) {
-                    document.getElementById(key).innerHTML = '<i class="fas fa-check-circle"></i>';
-                }
-                
-                button.addEventListener('click', function() {
-                    progress[key] = true;
-                    localStorage.setItem('courseProgressZI', JSON.stringify(progress));
-                    document.getElementById(key).innerHTML = '<i class="fas fa-check-circle"></i>';
-                    updateProgress();
-                    
-                    // Feedback visual
-                    button.textContent = 'Concluído!';
-                    button.style.background = '#0ba360';
-                    setTimeout(() => {
-                        button.textContent = 'Marcar como concluída';
-                        button.style.background = '';
-                    }, 1500);
-                });
-            });
+completeButtons.forEach(function(button) {
+    const module = button.getAttribute('data-module');
+    const lesson = button.getAttribute('data-lesson');
+    const key = `mod${module}-lesson${lesson}`;
+    
+    // Verificar se já está concluído
+    if (progress[key]) {
+        document.getElementById(key).innerHTML = '<i class="fas fa-check-circle"></i>';
+    }
+    
+    button.addEventListener('click', function() {
+        progress[key] = true;
+        localStorage.setItem('courseProgressZI', JSON.stringify(progress));
+        document.getElementById(key).innerHTML = '<i class="fas fa-check-circle"></i>';
+        updateProgress();
+        
+        // Feedback visual
+        button.textContent = 'Concluído!';
+        button.style.background = '#0ba360';
+        setTimeout(() => {
+            button.textContent = 'Marcar como concluída';
+            button.style.background = '';
+        }, 1500);
+    });
+});
             
             // Atualizar barra de progresso
             function updateProgress() {
